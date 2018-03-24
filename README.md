@@ -4,10 +4,10 @@ Django based web app scraping news from few news sites into one place.
 
 ## Built With
 
-* [Django](https://www.djangoproject.com/) )- The web framework used
-* [Requests](http://docs.python-requests.org/en/master/) ) 
-* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) ) 
-* [NewsAPI](https://newsapi.org/) )- API for fetching news from few sites 
+* [Django](https://www.djangoproject.com/)- The web framework used
+* [Requests](http://docs.python-requests.org/en/master/) 
+* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) 
+* [NewsAPI](https://newsapi.org/)- API for fetching news from few sites 
 
 
 ## Version
@@ -20,5 +20,5 @@ Django based web app scraping news from few news sites into one place.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
