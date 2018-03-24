@@ -1,0 +1,16 @@
+<html>
+<head>
+
+</head>
+<body>
+<h2>{{ msg }}</h2>
+{% if articles %}
+    <ul>
+    {% for article in articles %}
+        <li>{{article.title}} ~{{article.author}}</li>
+    {% endfor %}
+    </ul>
+{% endif %}
+</body>
+
+</html>
