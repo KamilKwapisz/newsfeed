@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block title %}Newsfeed{% endblock %}
+{% block body %}
+{% load static %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Tytuł
+        <small>Secondary Text</small>
+      </h1>
+
+        {% if articles %}
+      <div class="row">
+        {% for article in articles %}
+
+        <div class="col-lg-6 portfolio-item">
+          <div class="card h-100">
+
+
+
+              {% if article.photo %}
+            <a href="#"><img class="card-img-top" src="{% static article.photo %}" alt="">
+              {% elif article.urlToImage %}
+            <a href="#"><img class="card-img-top" src="{{article.urlToImage}}" width="700" alt=""></a>
+              {% else %}
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              {% endif %}
+
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="{{article.url}}">{{article.title}} ~{{article.author}}</a>
+                  {% if article.score != None %}
+                <i class="fas fa-thumbs-up"></i> {{article.score}}
+                {% endif %}
+                  {% if article.num_comments >= 0 %}
+                <i class="far fa-comments"></i> {{article.num_comments}}
+                {% endif %}
+
+
+              </h4>
+              <p class="card-text">{{article.selftext}}</p>
+                <div class="row">
+                    <div class="col-6">{{article.created}}</div>
+                {% if article.origin_logo %}
+                <div class="col-6 text-right"><img class="#" src="{% static article.origin_logo %}" alt=""></div>
+                 {% endif %}
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+{% endfor %}
+      </div>
+
+        {% endif %}
+      <!-- /.row -->
+       {% if articles.has_other_pages %}
+        <div class="controls-below-table">
+         <div class="table-records-pages">
+          <ul class="pagination justify-content-center">
+            {% if articles.has_previous %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ articles.previous_page_number }}" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+              </li>
+
+            {% endif %}
+
+            {% for i in articles.paginator.page_range %}
+              {% if articles.number == i %}
+                <li class="page-item"><span class="page-link text-dark">{{ i }} <span class="sr-only">(current)</span></span></li>
+              {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if articles.has_next %}
+              <li class="page-item">
+                  <a class="page-link" href="?page={{ articles.next_page_number }}" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                      <span class="sr-only">Next</span>
+                  </a>
+              </li>
+
+            {% endif %}
+          </ul>
+         </div>
+        </div>
+        {% endif %}
+
+    </div>
+    <!-- /.container -->
+{% endblock %}
